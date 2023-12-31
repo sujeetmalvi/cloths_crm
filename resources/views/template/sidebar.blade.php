@@ -1,50 +1,81 @@
 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>General</h3>
+                <h3>Menu</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li><a href="/dashboard"><i class="fa fa-home"></i> Dashboard </a></li>
+                  <!-- <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/dashboard">Dashboard</a></li>
                       <li><a href="/dashboard2">Dashboard2</a></li>
                       <li><a href="/dashboard3">Dashboard3</a></li>
                     </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Forms <span class="fa fa-chevron-down"></span></a>
+                  </li> -->
+                  <li><a><i class="fa fa-edit"></i> Settings <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/form">General Form</a></li>
-                      <li><a href="/form_advanced">Advanced Components</a></li>
-                      <li><a href="/form_validation">Form Validation</a></li>
-                      <li><a href="/form_wizards">Form Wizard</a></li>
-                      <li><a href="/form_upload">Form Upload</a></li>
-                      <li><a href="/form_buttons">Form Buttons</a></li>
+                      <li><a href="/branchs">Branch</a></li>
+                      <li><a href="#">Department</a></li>
+                      <li><a href="#">Designation</a></li>
+                      <li><a href="#">Fabric</a></li>
+                      <li><a href="#">Trims & Consumables</a></li>
+                      <li><a href="#">Units</a></li>
+                      <li><a href="#">Shifts</a></li>
+                      <li><a href="#">Warehouses</a></li>
+                      <li><a href="#">Taxes</a></li>
+                      <li><a href="#">Warehouse Zones</a></li>
+                      <li><a href="#">Vendors</a></li>
+                      <li><a href="#">Customers</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-sitemap"></i>Purchase Request<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/general_elements">General Elements</a></li>
-                      <li><a href="/media_gallery">Media Gallery</a></li>
-                      <li><a href="/typography">Typography</a></li>
-                      <li><a href="/icons">Icons</a></li>
-                      <li><a href="/glyphicons">Glyphicons</a></li>
-                      <li><a href="/widgets">Widgets</a></li>
-                      <li><a href="/invoice">Invoice</a></li>
-                      <li><a href="/inbox">Inbox</a></li>
-                      <li><a href="/calendar">Calendar</a></li>
+                        <li><a href="#">Request Generation</a>
+                        <li><a href="#">Purchase Request Approval</a>
+                        <li><a href="#">Request for Quotation</a></li>
+                        <li><a href="#">Quotations Received</a></li>
+                        <li><a href="#">Rating and Review System for Vendors</a></li>
+                        <li><a href="#">Quotation Approval</a></li>
+                        <li><a href="#">Warehouses</a></li>
+                        </li>
+                    </ul>
+                  </li> 
+                  <li><a><i class="fa fa-edit"></i> Goods <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">Goods Received</a></li>
+                      <li><a href="#">Goods Return</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-table"></i> Tables <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-desktop"></i>Invoice<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/tables">Tables</a></li>
-                      <li><a href="/tables_dynamic">Table Dynamic</a></li>
+                      <li><a href="#">Invoice Generation</a></li>
+                      <li><a href="#">Invoice Receiving</a></li>
+                      <li><a href="#">Invoice Approval</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Data Presentation <span class="fa fa-chevron-down"></span></a>
+                  <li><a><i class="fa fa-table"></i> Sales <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="/chartjs">Chart JS</a></li>
-                      <li><a href="/chartjs2">Chart JS2</a></li>
-                      <li><a href="/morisjs">Moris JS</a></li>
-                      <li><a href="/echarts">ECharts</a></li>
-                      <li><a href="/other_charts">Other Charts</a></li>
+                      <li><a href="#">Order Management</a></li>
+                      <li><a href="#">Internal Approval</a></li>
+                      <li><a href="#">Realtime Stock status</a></li>
+                      <li><a href="#">Request for Dates Estimation</a></li>
+                      <li><a href="#">Packaging</a></li>
+                      <li><a href="#">Dispatch</a></li>
+                      <li><a href="#">Sales Return</a></li>
+                      <li><a href="#">Payment Entries</a></li>
+                      <li><a href="#">Sales Replacement</a></li>
+                      <li><a href="#">Refund entries</a></li>
+                    </ul>
+                  </li>
+                  <li><a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                      <li><a href="#">Daily Performance Report</a></li>
+                      <li><a href="#">Realtime Stock Report</a></li>
+                      <li><a href="#">Pending Orders</a></li>
+                      <li><a href="#">Vendor-wise Purchases</a></li>
+                      <li><a href="#">Customer-wise Sales</a></li>
+                      <li><a href="#">Product-wise Purchases</a></li>
+                      <li><a href="#">Product-wise Sales</a></li>
+                      <li><a href="#">Stock Aging Report</a></li>
+                      <li><a href="#">Stock Reserve Alarm Report</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-clone"></i>Layouts <span class="fa fa-chevron-down"></span></a>
