@@ -38,21 +38,24 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+                        <form id="update_branch" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" action="{{ route('branchs.update', $branch->branch_id) }}" method="post">
+
+                        @csrf
+                        @method('PUT')
                             <div class="item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="branch_name">Branch Name <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="branch_name" name="branch_name" required="required" class="form-control ">
+                                    <input type="text" id="branch_name" name="branch_name" required="required" class="form-control " value="{{$branch->branch_name}}">
                                 </div>
                             </div>
-                            <div class="item form-group">
+                            <!-- <div class="item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="branch_name">Branch Description <span class="required">&nbsp;</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <textarea class="form-control" rows="3" id="branch_description" name="branch_description" placeholder="Description"></textarea>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <div class="ln_solid"></div>
                             <div class="item form-group">
