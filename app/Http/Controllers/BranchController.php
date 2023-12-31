@@ -38,8 +38,7 @@ class BranchController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required',
+            'branch_name' => 'required|max:100'
         ]);
 
         Branch::create($request->all());
@@ -54,12 +53,12 @@ class BranchController extends Controller
      * @param  \App\Models\Branch  $branch
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $branch = Branch::find($id);
+    // public function show($id)
+    // {
+    //     $branch = Branch::where('branch_id', $id)->first();
 
-        return view('branchs.show', compact('branch'));
-    }
+    //     return view('branchs.show', compact('branch'));
+    // }
 
     /**
      * Show the form for editing the specified resource.
@@ -69,9 +68,9 @@ class BranchController extends Controller
      */
     public function edit($id)
     {
-        $branch = Branch::find($id);
+        $branch = Branch::where('branch_id', $id)->first();
 
-        return view('branchs.create', compact('branch'));
+        return view('branchs.show', compact('branch'));
     }
 
     /**
@@ -84,12 +83,12 @@ class BranchController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'title' => 'required|max:255',
-            'body' => 'required',
+            'branch_name' => 'required|max:100'
         ]);
 
-        $branch = Branch::find($id);
-        $branch->update($request->all());
+        $branch = Branch::where('branch_id', $id)->first();
+        // $branch->update($request->all());
+        Branch::where('branch_id', $id)->update(['branch_name' => $request->branch_name]);
 
         return redirect()->route('branchs.index')
             ->with('success', 'Branch updated successfully.');
@@ -103,8 +102,9 @@ class BranchController extends Controller
      */
     public function destroy($id)
     {
-        $branch = Branch::find($id);
-        $branch->delete();
+        $branch = Branch::where('branch_id', $id)->first();
+        // $branch->delete();
+        Branch::where('branch_id', $id)->delete();
 
         return redirect()->route('branchs.index')
             ->with('success', 'Branch deleted successfully');
