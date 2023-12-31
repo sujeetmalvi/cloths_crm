@@ -14,7 +14,9 @@ class CreateUnitsTable extends Migration
     public function up()
     {
         Schema::create('units', function (Blueprint $table) {
-            $table->id();
+            $table->id('unit_id');
+            $table->string('uom', 100);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

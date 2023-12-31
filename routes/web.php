@@ -41,13 +41,13 @@ Route::middleware('auth')->group(function () {
     // adds a post to the database
     Route::post('/branchs', [BranchController::class ,'store'])->name('branchs.store');
     // returns a page that shows a full post
-    Route::get('/branchs/{post}', [BranchController::class ,'show'])->name('branchs.show');
+    // Route::get('/branchs/{post}', [BranchController::class ,'show'])->name('branchs.show');
     // returns the form for editing a post
-    Route::get('/branchs/{post}/edit', [BranchController::class ,'edit'])->name('branchs.edit');
+    Route::get('/branchs/{post}', [BranchController::class ,'edit'])->name('branchs.edit');
     // updates a post
     Route::put('/branchs/{post}', [BranchController::class ,'update'])->name('branchs.update');
     // deletes a post
-    Route::delete('/branchs/{post}', [BranchController::class ,'destroy'])->name('branchs.destroy');
+    Route::delete('/branches/{post}', [BranchController::class ,'destroy'])->name('branchs.destroy');
 
 
 });
