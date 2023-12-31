@@ -29,54 +29,54 @@
                     <div class="x_title">
                         <!-- <h2>Plain Page</h2> -->
                         <ul class="nav navbar-right panel_toolbox">
+                            @if(Session::get('success', false))
+                            <?php $data = Session::get('success'); ?>
                             <li>
-                                <a href="/branchs/create">
-                                    <button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i></button>
-                                </a>
-                            </li>
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="x_content">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <div class="card-box table-responsive">
+                                <div class="alert alert-success" role="alert">
+                                  <i class="fa fa-check"></i>
+                                  {{ $data }}
+                              </div>
+                          </li>
+                          @endif
+                          <li>
+                            <a href="/branchs/create">
+                                <button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i></button>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-box table-responsive">
                                     <!-- <p class="text-muted font-13 m-b-30">
                                         DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
                                     </p> -->
                                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Description</th>
+                                                <th>Branch Name</th>
                                                 <th style="width:200px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            @if(!empty($branchs))  
+                                            @foreach($branchs as $branch)
                                             <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>
-                                                    <a href="/branchs/edit"><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-pencil"></i></button></a>
-                                                    <button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+                                                <td>{{$branch->branch_name}}</td>
+                                                <td style="display: flex;">
+                                                    <a href="{{ route('branchs.edit', $branch->branch_id) }}"><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-pencil"></i></button></a>
+
+                                                    <form action="{{ route('branchs.destroy', $branch->branch_id) }}" method="post">
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
+                                                        {!! method_field('delete') !!}
+                                                        {!! csrf_field() !!}
+                                                    </form>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>
-                                                    <a href="/branchs/edit"><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-pencil"></i></button></a>
-                                                    <button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixon</td>
-                                                <td>System Architect</td>
-                                                <td>
-                                                    <a href="/branchs/edit"><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-pencil"></i></button></a>
-                                                    <button type="button" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
-                                                </td>
-                                            </tr>
+                                            @endforeach
+                                            @endif
                                         </tbody>
                                     </table>
                                 </div>
