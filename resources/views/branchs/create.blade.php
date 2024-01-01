@@ -39,6 +39,7 @@
                     </div>
                     <div class="x_content">
                         <form id="create_branch" method="post" action="/branchs" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" enctype="multipart/form-data">
+                        @csrf
                             <div class="item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3 label-align" for="branch_name">Branch Name <span class="required">*</span>
                                 </label>
