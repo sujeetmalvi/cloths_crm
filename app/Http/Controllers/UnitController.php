@@ -14,7 +14,9 @@ class UnitController extends Controller
      */
     public function index()
     {
-        //
+        $units = Unit::all();
+
+        return view('units.index', compact('units'));
     }
 
     /**
@@ -24,7 +26,7 @@ class UnitController extends Controller
      */
     public function create()
     {
-        //
+        return view('units.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class UnitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'uom' => 'required|max:100'
+        ]);
+
+        Unit::create($request->all());
+
+        return redirect()->route('units.index')
+            ->with('success', 'Unit created successfully.');
     }
 
     /**
@@ -55,9 +64,11 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function edit(Unit $unit)
+    public function edit($id)
     {
-        //
+        $unit = Unit::where('unit_id', $id)->first();
+
+        return view('units.edit', compact('unit'));
     }
 
     /**
@@ -67,9 +78,17 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Unit $unit)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'uom' => 'required|max:100'
+        ]);
+
+        $unit = Unit::where('unit_id', $id)->first();
+        Unit::where('unit_id', $id)->update(['uom' => $request->uom]);
+
+        return redirect()->route('units.index')
+            ->with('success', 'Unit updated successfully.');
     }
 
     /**
@@ -78,8 +97,12 @@ class UnitController extends Controller
      * @param  \App\Models\Unit  $unit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Unit $unit)
+    public function destroy($id)
     {
-        //
+        $unit = Unit::where('unit_id', $id)->first();
+        Unit::where('unit_id', $id)->delete();
+
+        return redirect()->route('units.index')
+            ->with('success', 'Unit deleted successfully');
     }
 }

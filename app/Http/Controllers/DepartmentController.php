@@ -14,7 +14,9 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::all();
+
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -24,7 +26,7 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        return view('departments.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class DepartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'department_name' => 'required|max:100'
+        ]);
+
+        Department::create($request->all());
+
+        return redirect()->route('departments.index')
+            ->with('success', 'Department created successfully.');
     }
 
     /**
@@ -55,9 +64,11 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function edit(Department $department)
+    public function edit($id)
     {
-        //
+        $department = Department::where('department_id', $id)->first();
+
+        return view('departments.edit', compact('department'));
     }
 
     /**
@@ -67,9 +78,17 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Department $department)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'department_name' => 'required|max:100'
+        ]);
+
+        $department = Department::where('department_id', $id)->first();
+        Department::where('department_id', $id)->update(['department_name' => $request->department_name]);
+
+        return redirect()->route('departments.index')
+            ->with('success', 'Department updated successfully.');
     }
 
     /**
@@ -78,8 +97,12 @@ class DepartmentController extends Controller
      * @param  \App\Models\Department  $department
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Department $department)
+    public function destroy($id)
     {
-        //
+        $department = Department::where('department_id', $id)->first();
+        Department::where('department_id', $id)->delete();
+
+        return redirect()->route('departments.index')
+            ->with('success', 'Department deleted successfully');
     }
 }

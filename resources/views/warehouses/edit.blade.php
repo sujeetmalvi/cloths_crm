@@ -6,7 +6,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Branch Create</h3>
+                <h3>Warehouse Edit</h3>
             </div>
 
             <!-- <div class="title_right">
@@ -30,7 +30,7 @@
                         <!-- <h2>Plain Page</h2> -->
                         <ul class="nav navbar-right panel_toolbox">
                             <li>
-                                <a href="/branchs">
+                                <a href="/warehouses">
                                     <button class="btn btn-primary"><i class="glyphicon glyphicon-list"></i> List</button>
                                 </a>
                             </li>
@@ -38,23 +38,24 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form id="create_branch" method="post" action="/branchs" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" enctype="multipart/form-data">
-                            @csrf
-                            @method('POST')
+                        <form id="update_warehouse" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="" action="{{ route('warehouses.update', $warehouse->warehouse_id) }}" method="post">
+
+                        @csrf
+                        @method('PUT')
                             <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="branch_name">Branch Name <span class="required">*</span>
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="warehouse_name">Warehouse Name <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <input type="text" id="branch_name" name="branch_name" required="required" class="form-control ">
+                                    <input type="text" id="warehouse_name" name="warehouse_name" required="required" class="form-control " value="{{$warehouse->warehouse_name}}">
                                 </div>
                             </div>
-                            <!-- <div class="item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="branch_name">Branch Description <span class="required">&nbsp;</span>
+                            <div class="item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3 label-align" for="address">Address <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
-                                    <textarea class="form-control" rows="3" id="branch_description" name="branch_description" placeholder="Description"></textarea>
+                                    <input type="text" id="address" name="address" required="required" class="form-control " value="{{$warehouse->address}}">
                                 </div>
-                            </div> -->
+                            </div>
 
                             <div class="ln_solid"></div>
                             <div class="item form-group">
