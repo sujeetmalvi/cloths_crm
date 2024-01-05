@@ -13,14 +13,14 @@
                   <li><a><i class="fa fa-edit"></i> Settings <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="/branchs">Branch</a></li>
-                      <li><a href="#">Department</a></li>
-                      <li><a href="#">Designation</a></li>
+                      <li><a href="/departments">Department</a></li>
+                      <li><a href="/designations">Designation</a></li>
                       <li><a href="#">Fabric</a></li>
                       <li><a href="#">Trims & Consumables</a></li>
-                      <li><a href="#">Units</a></li>
-                      <li><a href="#">Shifts</a></li>
-                      <li><a href="#">Warehouses</a></li>
-                      <li><a href="#">Taxes</a></li>
+                      <li><a href="/units">Units</a></li>
+                      <li><a href="/shifts">Shifts</a></li>
+                      <li><a href="/warehouses">Warehouses</a></li>
+                      <li><a href="/taxes">Taxes</a></li>
                       <li><a href="#">Warehouse Zones</a></li>
                       <li><a href="#">Vendors</a></li>
                       <li><a href="#">Customers</a></li>

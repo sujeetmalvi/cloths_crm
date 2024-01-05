@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Shift;
+use App\Models\Tax;
 use Illuminate\Http\Request;
 
-class ShiftController extends Controller
+class TaxController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        $shifts = Shift::all();
+        $taxes = Tax::all();
 
-        return view('shifts.index', compact('shifts'));
+        return view('taxes.index', compact('taxes'));
     }
 
     /**
@@ -26,7 +26,7 @@ class ShiftController extends Controller
      */
     public function create()
     {
-        return view('shifts.create');
+        return view('taxes.create');
     }
 
     /**
@@ -38,22 +38,22 @@ class ShiftController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'shift_name' => 'required|max:100'
+            'tax_name' => 'required|max:100'
         ]);
 
-        Shift::create($request->all());
+        Tax::create($request->all());
 
-        return redirect()->route('shifts.index')
-            ->with('success', 'Shift created successfully.');
+        return redirect()->route('taxes.index')
+            ->with('success', 'Tax created successfully.');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Shift  $shift
+     * @param  \App\Models\Tax  $tax
      * @return \Illuminate\Http\Response
      */
-    public function show(Shift $shift)
+    public function show(Tax $tax)
     {
         //
     }
@@ -61,48 +61,48 @@ class ShiftController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Shift  $shift
+     * @param  \App\Models\Tax  $tax
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $shift = Shift::where('shift_id', $id)->first();
+        $tax = Tax::where('tax_id', $id)->first();
 
-        return view('shifts.edit', compact('shift'));
+        return view('taxes.edit', compact('tax'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Shift  $shift
+     * @param  \App\Models\Tax  $tax
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         $request->validate([
-            'shift_name' => 'required|max:100'
+            'tax_name' => 'required|max:100'
         ]);
 
-        $shift = Shift::where('shift_id', $id)->first();
-        Shift::where('shift_id', $id)->update(['shift_name' => $request->shift_name]);
+        $tax = Tax::where('tax_id', $id)->first();
+        Tax::where('tax_id', $id)->update(['tax_name' => $request->tax_name]);
 
-        return redirect()->route('shifts.index')
-            ->with('success', 'Shift updated successfully.');
+        return redirect()->route('taxes.index')
+            ->with('success', 'Tax updated successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Shift  $shift
+     * @param  \App\Models\Tax  $tax
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $shift = Shift::where('shift_id', $id)->first();
-        Shift::where('shift_id', $id)->delete();
+        $tax = Tax::where('tax_id', $id)->first();
+        Tax::where('tax_id', $id)->delete();
 
-        return redirect()->route('shifts.index')
-            ->with('success', 'Shift deleted successfully');
+        return redirect()->route('taxes.index')
+            ->with('success', 'Tax deleted successfully');
     }
 }

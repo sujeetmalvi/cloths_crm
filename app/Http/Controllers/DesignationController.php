@@ -14,7 +14,9 @@ class DesignationController extends Controller
      */
     public function index()
     {
-        //
+        $designations = Designation::all();
+
+        return view('designations.index', compact('designations'));
     }
 
     /**
@@ -24,7 +26,7 @@ class DesignationController extends Controller
      */
     public function create()
     {
-        //
+        return view('designations.create');
     }
 
     /**
@@ -35,7 +37,14 @@ class DesignationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'designation_name' => 'required|max:100'
+        ]);
+
+        Designation::create($request->all());
+
+        return redirect()->route('designations.index')
+            ->with('success', 'Designation created successfully.');
     }
 
     /**
@@ -55,9 +64,11 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Designation $designation)
+    public function edit($id)
     {
-        //
+        $designation = Designation::where('designation_id', $id)->first();
+
+        return view('designations.edit', compact('designation'));
     }
 
     /**
@@ -67,9 +78,17 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Designation $designation)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'designation_name' => 'required|max:100'
+        ]);
+
+        $designation = Designation::where('designation_id', $id)->first();
+        Designation::where('designation_id', $id)->update(['designation_name' => $request->designation_name]);
+
+        return redirect()->route('designations.index')
+            ->with('success', 'Designation updated successfully.');
     }
 
     /**
@@ -78,8 +97,12 @@ class DesignationController extends Controller
      * @param  \App\Models\Designation  $designation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Designation $designation)
+    public function destroy($id)
     {
-        //
+        $designation = Designation::where('designation_id', $id)->first();
+        Designation::where('designation_id', $id)->delete();
+
+        return redirect()->route('designations.index')
+            ->with('success', 'Designation deleted successfully');
     }
 }
