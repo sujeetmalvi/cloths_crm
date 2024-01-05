@@ -14,7 +14,9 @@ class WarehouseController extends Controller
      */
     public function index()
     {
-        //
+        $warehouses = Warehouse::all();
+
+        return view('warehouses.index', compact('warehouses'));
     }
 
     /**
@@ -24,7 +26,7 @@ class WarehouseController extends Controller
      */
     public function create()
     {
-        //
+        return view('warehouses.create');
     }
 
     /**
@@ -35,7 +37,15 @@ class WarehouseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'warehouse_name' => 'required|max:100',
+            'address' => 'required'
+        ]);
+
+        Warehouse::create($request->all());
+
+        return redirect()->route('warehouses.index')
+            ->with('success', 'Warehouse created successfully.');
     }
 
     /**
@@ -55,9 +65,11 @@ class WarehouseController extends Controller
      * @param  \App\Models\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function edit(Warehouse $warehouse)
+    public function edit($id)
     {
-        //
+        $warehouse = Warehouse::where('warehouse_id', $id)->first();
+
+        return view('warehouses.edit', compact('warehouse'));
     }
 
     /**
@@ -67,9 +79,18 @@ class WarehouseController extends Controller
      * @param  \App\Models\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Warehouse $warehouse)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'warehouse_name' => 'required|max:100',
+            'address' => 'required'
+        ]);
+
+        $warehouse = Warehouse::where('warehouse_id', $id)->first();
+        Warehouse::where('warehouse_id', $id)->update(['warehouse_name' => $request->warehouse_name, 'address' => $request->address]);
+
+        return redirect()->route('warehouses.index')
+            ->with('success', 'Warehouse updated successfully.');
     }
 
     /**
@@ -78,8 +99,12 @@ class WarehouseController extends Controller
      * @param  \App\Models\Warehouse  $warehouse
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Warehouse $warehouse)
+    public function destroy($id)
     {
-        //
+        $warehouse = Warehouse::where('warehouse_id', $id)->first();
+        Warehouse::where('warehouse_id', $id)->delete();
+
+        return redirect()->route('warehouses.index')
+            ->with('success', 'Warehouse deleted successfully');
     }
 }
