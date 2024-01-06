@@ -14,6 +14,9 @@ use App\Http\Controllers\ShiftController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\TaxController;
+use App\Http\Controllers\ProductMaterialRequestController;
+use App\Http\Controllers\ProductMaterialRequestApprovalController;
+use App\Http\Controllers\ProductMaterialRequestIssuedController;
 
 
 /*
@@ -96,4 +99,21 @@ Route::middleware('auth')->group(function () {
     Route::get('/taxes/{post}', [TaxController::class ,'edit'])->name('taxes.edit');
     Route::put('/taxes/{post}', [TaxController::class ,'update'])->name('taxes.update');
     Route::delete('/taxes/{post}', [TaxController::class ,'destroy'])->name('taxes.destroy');
+
+    Route::get('/product-material-request',[ProductMaterialRequestController::class ,'index'])->name('product-material-request.index');
+    Route::get('/product-material-request/create', [ProductMaterialRequestController::class , 'create'])->name('product-material-request.create');
+    Route::post('/product-material-request', [ProductMaterialRequestController::class ,'store'])->name('product-material-request.store');
+    Route::get('/product-material-request/{post}', [ProductMaterialRequestController::class ,'show'])->name('product-material-request.show');
+
+    Route::get('/product-material-request-approval',[ProductMaterialRequestApprovalController::class ,'index'])->name('product-material-request-approval.index');
+    // Route::get('/product-material-request/create', [ProductMaterialRequestApprovalController::class , 'create'])->name('product-material-request.create');
+    // Route::post('/product-material-request', [ProductMaterialRequestApprovalController::class ,'store'])->name('product-material-request.store');
+    Route::get('/product-material-request-approval/{post}', [ProductMaterialRequestApprovalController::class ,'show'])->name('product-material-request-approval.show');
+    Route::put('/product-material-request-approval', [ProductMaterialRequestApprovalController::class ,'update'])->name('product-material-request-approval.update');
+
+    Route::get('/product-material-request-issued',[ProductMaterialRequestIssuedController::class ,'index'])->name('product-material-request-issued.index');
+    // Route::get('/product-material-request/create', [ProductMaterialRequestApprovalController::class , 'create'])->name('product-material-request.create');
+    // Route::post('/product-material-request', [ProductMaterialRequestApprovalController::class ,'store'])->name('product-material-request.store');
+    Route::get('/product-material-request-issued/{post}', [ProductMaterialRequestIssuedController::class ,'show'])->name('product-material-request-issued.show');
+    Route::put('/product-material-request-issued', [ProductMaterialRequestIssuedController::class ,'update'])->name('product-material-request-issued.update');
 });
