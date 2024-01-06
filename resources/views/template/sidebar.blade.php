@@ -24,6 +24,9 @@
                       <li><a href="#">Warehouse Zones</a></li>
                       <li><a href="#">Vendors</a></li>
                       <li><a href="#">Customers</a></li>
+                      <li><a href="/product-material-request">Product Material Request</a></li>
+                      <li><a href="/product-material-request-approval">Product Material Request Approval</a></li>
+                      <li><a href="/product-material-request-issued">Product Material Request Issued</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-sitemap"></i>Purchase Request<span class="fa fa-chevron-down"></span></a>

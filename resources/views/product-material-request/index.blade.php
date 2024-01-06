@@ -6,7 +6,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Unit List</h3>
+                <h3>Product Material Requests</h3>
             </div>
 
             <div class="title_right">
@@ -39,7 +39,7 @@
                           </li>
                           @endif
                           <li>
-                            <a href="/units/create">
+                            <a href="/product-material-request/create">
                                 <button class="btn btn-success btn-sm"><i class="glyphicon glyphicon-plus"></i></button>
                             </a>
                         </li>
@@ -56,23 +56,33 @@
                                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                                         <thead>
                                             <tr>
-                                                <th>UOM</th>
+                                                <th>Order Number</th>
+                                                <th>Requested By</th>
+                                                <th>Requested Date</th>
                                                 <th style="width:200px;">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @if(!empty($units))  
-                                            @foreach($units as $unit)
+                                            @if(!empty($product_material_request))  
+                                            @foreach($product_material_request as $request)
                                             <tr>
-                                                <td>{{$unit->uom}}</td>
+                                                <td>{{$request->order_no}}</td>
+                                                <td>{{$request->name}}</td>
+                                                <td>{{$request->created_at}}</td>
                                                 <td style="display: flex;">
-                                                    <a href="{{ route('units.edit', $unit->unit_id) }}"><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-pencil"></i></button></a>
+                                                    <form action="{{ route('product-material-request.show', $request->material_request_id) }}" method="post">
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-eye-open"></i></button>
+                                                        {!! method_field('get') !!}
+                                                        {!! csrf_field() !!}
+                                                    </form>
+                                                    
+                                                    <!-- <a href=""><button type="button" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-pencil"></i></button></a>
 
-                                                    <form action="{{ route('units.destroy', $unit->unit_id) }}" method="post">
+                                                    <form action="" method="post">
                                                         <button type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash"></i></button>
                                                         {!! method_field('delete') !!}
                                                         {!! csrf_field() !!}
-                                                    </form>
+                                                    </form> -->
                                                 </td>
                                             </tr>
                                             @endforeach
