@@ -72,7 +72,6 @@
                                             $dt = new DateTime($request->created_at);
 							                $dt->setTimezone(new DateTimeZone('Asia/Kolkata'));
 							                $requested_date = $dt->format('d-m-Y H:i:s');
-
                                             $approved_date = '';
                                             $approved_by = '';
 							                if($request->approved_date != '' && $request->approved_date != null) {
