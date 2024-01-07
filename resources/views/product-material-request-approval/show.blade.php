@@ -39,7 +39,7 @@
                           </li>
                           @endif
                           <li>
-                            <a href="/product-material-request">
+                            <a href="/product-material-request-approval">
                                 <button class="btn btn-primary"><i class="glyphicon glyphicon-list"></i> List</button>
                             </a>
                         </li>

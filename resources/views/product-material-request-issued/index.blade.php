@@ -79,26 +79,30 @@
 								            }
 
 							                $approved_date = '';
+                                            $approved_by = '';
 							                if($request->approved_date != '' && $request->approved_date != null) {
 	                                            $dt1 = new DateTime($request->approved_date);
 								                $dt1->setTimezone(new DateTimeZone('Asia/Kolkata'));
 								                $approved_date = $dt1->format('d-m-Y H:i:s');
+                                                $approved_by = $request->name;
 								            }
 
 								            $issued_date = '';
+                                            $issued_by = '';
 								            if($request->issued_date != '' && $request->issued_date != null) {
 								                $dt2 = new DateTime($request->issued_date);
 								                $dt2->setTimezone(new DateTimeZone('Asia/Kolkata'));
 								                $issued_date = $dt2->format('d-m-Y H:i:s');
+                                                $issued_by = $request->name; 
 								            }
                                             ?>
                                             <tr>
                                                 <td>{{$request->order_no}}</td>
                                                 <td>{{$request->name}}</td>
                                                 <td>{{$requested_date}}</td>
-                                                <td>{{$request->name}}</td>
+                                                <td>{{$approved_by}}</td>
                                                 <td>{{$approved_date}}</td>
-                                                <td>{{$request->name}}</td>
+                                                <td>{{$issued_by}}</td>
                                                 <td>{{$issued_date}}</td>
                                                 <td style="display: flex;">
                                                     <form action="{{ route('product-material-request-issued.show', $request->material_request_id) }}" method="post">
