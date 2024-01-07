@@ -46,11 +46,11 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <select class="form-control" id="order_no" name="order_no" required>
-										<option value="">Choose option</option>
-										<option value="one">Option one</option>
-										<option value="two">Option two</option>
-										<option value="three">Option three</option>
-										<option value="four">Option four</option>
+										<option value="">Choose order</option>
+										<option value="Ord-20240102147">Ord-20240102147</option>
+										<option value="Ord-20240102215">Ord-20240102215</option>
+										<option value="Ord-20240102219">Ord-20240102219</option>
+										<option value="Ord-20240102586">Ord-20240102586</option>
 									</select>
                                 </div>
                             </div>
@@ -73,11 +73,11 @@
 										<th scope="row">1</th>
 										<td>
 											<select class="form-control" id="material_code_1" name="material_code[]" required>
-												<option value="">Choose option</option>
-												<option value="one">Option one</option>
-												<option value="two">Option two</option>
-												<option value="three">Option three</option>
-												<option value="four">Option four</option>
+												<option value="">Choose Material</option>
+												<option value="Material 1">Material 1</option>
+												<option value="Material 2">Material 2</option>
+												<option value="Material 3">Material 3</option>
+												<option value="Material 4">Material 4</option>
 											</select>
 										</td>
 										<td>

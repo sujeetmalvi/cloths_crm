@@ -73,15 +73,20 @@
 							                $dt->setTimezone(new DateTimeZone('Asia/Kolkata'));
 							                $requested_date = $dt->format('d-m-Y H:i:s');
 
-                                            $dt1 = new DateTime($request->approved_date);
-							                $dt1->setTimezone(new DateTimeZone('Asia/Kolkata'));
-							                $approved_date = $dt1->format('d-m-Y H:i:s');
+                                            $approved_date = '';
+                                            $approved_by = '';
+							                if($request->approved_date != '' && $request->approved_date != null) {
+	                                            $dt1 = new DateTime($request->approved_date);
+								                $dt1->setTimezone(new DateTimeZone('Asia/Kolkata'));
+								                $approved_date = $dt1->format('d-m-Y H:i:s');
+                                                $approved_by = $request->name;
+								            }
                                             ?>
                                             <tr>
                                                 <td>{{$request->order_no}}</td>
                                                 <td>{{$request->name}}</td>
                                                 <td>{{$requested_date}}</td>
-                                                <td>{{$request->name}}</td>
+                                                <td>{{$approved_by}}</td>
                                                 <td>{{$approved_date}}</td>
                                                 <td style="display: flex;">
                                                     <form action="{{ route('product-material-request-approval.show', $request->material_request_id) }}" method="post">

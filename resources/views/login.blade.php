@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 @include('template.head')
-  <body class="login">
+  <body class="login" style="background: url('/assets/images/textile1.jpg');background-size:cover;">
     <div>
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
@@ -26,23 +26,23 @@
               <div class="clearfix"></div>
 
               <div class="separator">
-                <p class="change_link">New to site?
+                <!-- <p class="change_link">New to site?
                   <a href="#signup" class="to_register"> Create Account </a>
-                </p>
+                </p> -->
 
                 <div class="clearfix"></div>
                 <br />
 
                 <div>
                   <!-- <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1> -->
-                  <p>©2016 All Rights Reserved. It is a Bootstrap 3 template. Privacy and Terms</p>
+                  <p>©2024 All Rights Reserved.</p>
                 </div>
               </div>
             </form>
           </section>
         </div>
 
-        <div id="register" class="animate form registration_form">
+        <!-- <div id="register" class="animate form registration_form">
           <section class="login_content">
             <form>
               <h1>Create Account</h1>
@@ -76,7 +76,7 @@
               </div>
             </form>
           </section>
-        </div>
+        </div> -->
       </div>
     </div>
   </body>
