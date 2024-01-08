@@ -46,11 +46,11 @@
                                 </label>
                                 <div class="col-md-6 col-sm-6 ">
                                     <select class="form-control" id="order_no" name="order_no" required>
-										<option value="">Choose option</option>
-										<option value="one">Option one</option>
-										<option value="two">Option two</option>
-										<option value="three">Option three</option>
-										<option value="four">Option four</option>
+										<option value="">Choose order</option>
+										<option value="Ord-20240102147">Ord-20240102147</option>
+										<option value="Ord-20240102215">Ord-20240102215</option>
+										<option value="Ord-20240102219">Ord-20240102219</option>
+										<option value="Ord-20240102586">Ord-20240102586</option>
 									</select>
                                 </div>
                             </div>
@@ -73,11 +73,11 @@
 										<th scope="row">1</th>
 										<td>
 											<select class="form-control" id="material_code_1" name="material_code[]" required>
-												<option value="">Choose option</option>
-												<option value="one">Option one</option>
-												<option value="two">Option two</option>
-												<option value="three">Option three</option>
-												<option value="four">Option four</option>
+												<option value="">Choose Material</option>
+												<option value="Material 1">Material 1</option>
+												<option value="Material 2">Material 2</option>
+												<option value="Material 3">Material 3</option>
+												<option value="Material 4">Material 4</option>
 											</select>
 										</td>
 										<td>
@@ -87,7 +87,12 @@
 											<input type="text" id="quantity_1" name="quantity[]" required="required" class="form-control ">
 										</td>
 										<td>
-											<input type="text" id="unit_1" name="unit[]" required="required" class="form-control ">
+											<select class="form-control" id="unit_1" name="unit[]" required>
+												<option value="">Choose Unit</option>
+												@foreach($units as $unit)
+													<option value="{{$unit->unit_id}}">{{$unit->uom}}</option>
+												@endforeach
+											</select>
 										</td>
 										<td>
 											
@@ -118,3 +123,52 @@
 @include('template.footer')
 @include('template.common_js')
 @include('template.bottom')
+
+<script type="text/javascript">
+	let count=1;
+ 
+        // Adding row on click to Add New Row button
+        $('#addBtn').click(function () {
+            count++;
+            let units = <?php echo $units; ?>;
+
+            let dynamicRowHTML = `
+            <tr id="`+count+`">
+                <th scope="row">`+count+`</th>
+                <td>
+                    <select class="form-control" id="material_code_`+count+`" name="material_code[]" required>
+                        <option value="">Choose option</option>
+                        <option value="one">Option one</option>
+                        <option value="two">Option two</option>
+                        <option value="three">Option three</option>
+                        <option value="four">Option four</option>
+                    </select>
+                </td>
+                <td>
+                    <textarea id="description_`+count+`" name="description[]" required="required" class="form-control "></textarea>
+                </td>
+                <td>
+                    <input type="text" id="quantity_`+count+`" name="quantity[]" required="required" class="form-control ">
+                </td>
+                <td>
+                    <select class="form-control" id="unit_1" name="unit[]" required>
+                        <option value="">Choose Unit</option>`;
+                        units.forEach(element => {
+                            dynamicRowHTML += `<option value="`+element.unit_id+`">`+element.uom+`</option>`;
+                        })
+            dynamicRowHTML += `</select>
+                </td>
+                <td>
+                    <i id="remove_`+count+`" data-id="`+count+`" class="fa fa-remove remove" style="cursor: pointer;"></i>
+                </td>
+            </tr>`;
+            $('#tbody').append(dynamicRowHTML);
+        });
+
+        // Removing Row on click to Remove button
+        $('#tbody').on('click', '.remove', function () {
+        	let row_id = $(this).attr('data-id');
+            $(this).parent('td').parent('tr#'+row_id).remove(); 
+            // count = 1;
+        });
+</script>

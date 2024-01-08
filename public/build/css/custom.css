@@ -4081,14 +4081,27 @@ a.hiddenanchor {
   clear: both;
   visibility: hidden; }
 
-.login_content {
+/* .login_content {
   margin: 0 auto;
   padding: 25px 0 0;
   position: relative;
   text-align: center;
   text-shadow: 0 1px 0 #fff;
-  min-width: 280px; }
+  min-width: 280px; } */
 
+.login_content {
+    margin: 0 auto;
+    padding: 25px;
+    position: relative;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    min-width: 280px;
+    border: solid 2px #000;
+    background:#2A3F54;
+    border-radius: 16px;
+    color: #fff;
+}
+  
 .login_content a,
 .login_content .btn-default:hover {
   text-decoration: none; }

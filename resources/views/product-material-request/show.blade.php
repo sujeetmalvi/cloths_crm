@@ -108,7 +108,7 @@
                                                 <td>{{$request->material_code}}</td>
                                                 <td>{{$request->description}}</td>
                                                 <td>{{$request->quantity}}</td>
-                                                <td>{{$request->unit}}</td>
+                                                <td>{{$request->uom}}</td>
                                                 <!-- <td style="display: flex;">
                                                     
                                                 </td> -->

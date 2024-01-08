@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductMaterialRequest;
 use App\Models\ProductMaterialRequestDetail;
+use App\Models\Unit;
 use Illuminate\Http\Request;
 
 class ProductMaterialRequestController extends Controller
@@ -27,7 +28,8 @@ class ProductMaterialRequestController extends Controller
      */
     public function create()
     {
-        return view('product-material-request.create');
+        $units = Unit::all();
+        return view('product-material-request.create', compact('units'));
     }
 
     /**
@@ -63,7 +65,7 @@ class ProductMaterialRequestController extends Controller
     {
         $product_material_request = ProductMaterialRequest::select('product_material_requests.*', 'users.name')->leftjoin('users', 'users.id', '=', 'product_material_requests.requested_by')->where('material_request_id', $id)->first();
 
-        $request_details = ProductMaterialRequestDetail::where('material_request_id', $id)->get();
+        $request_details = ProductMaterialRequestDetail::select('product_material_request_details.*', 'units.uom')->leftjoin('units', 'units.unit_id', '=', 'product_material_request_details.unit')->where('material_request_id', $id)->get();
 
         $details = array('product_material_request' => $product_material_request, 'request_details' => $request_details);
 
