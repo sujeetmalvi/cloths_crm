@@ -19,11 +19,11 @@ class CreateProductMaterialRequestDetailsTable extends Migration
             $table->string('material_code');
             $table->string('description', 500)->nullable();
             $table->integer('quantity');
-            $table->string('unit', 10);
+            $table->unsignedSmallInteger('unit');
             $table->integer('approved_qty')->nullable();
-            $table->string('approved_unit', 10)->nullable();
+            // $table->unsignedSmallInteger('approved_unit')->nullable();
             $table->integer('issued_qty')->nullable();
-            $table->string('issued_unit', 10)->nullable();
+            // $table->unsignedSmallInteger('issued_unit')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

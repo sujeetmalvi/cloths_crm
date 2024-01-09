@@ -133,20 +133,19 @@
 	                                                <td>{{$request->material_code}}</td>
 	                                                <td>{{$request->description}}</td>
 	                                                <td>{{$request->quantity}}</td>
-	                                                <td>{{$request->unit}}</td>
+	                                                <td>{{$request->uom}}</td>
                                                     <?php 
                                                     if($request->issued_qty != '' && $request->issued_qty != null){
                                                     ?>
                                                         <td>{{$request->approved_qty}}</td>
-                                                        <td>{{$request->approved_unit}}</td>
                                                     <?php
                                                     }else {
                                                     ?>
                                                         <td><input type="number" name="approved_qty[]" required value="{{$request->approved_qty}}"></td>
-                                                        <td><input type="text" name="approved_unit[]" required value="{{$request->approved_unit}}"></td>
                                                     <?php 
                                                     }
                                                     ?>
+                                                    <td>{{$request->uom}}</td>
 	                                                <input type="hidden" name="request_detail_id[]" value="{{$request->request_detail_id}}">
 	                                                <!-- <td style="display: flex;">
 	                                                    

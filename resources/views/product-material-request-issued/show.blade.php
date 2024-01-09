@@ -135,7 +135,7 @@
 	                                                <th>Approved Quantity</th>
 	                                                <th>Approved Unit</th>
 	                                                <th>Issued Quantity</th>
-	                                                <th>Issued Unit</th>
+	                                                <!-- <th>Issued Unit</th> -->
 	                                                <!-- <th style="width:200px;">Action</th> -->
 	                                            </tr>
 	                                        </thead>
@@ -146,11 +146,10 @@
 	                                                <td>{{$request->material_code}}</td>
 	                                                <td>{{$request->description}}</td>
 	                                                <td>{{$request->quantity}}</td>
-	                                                <td>{{$request->unit}}</td>
+	                                                <td>{{$request->uom}}</td>
 	                                                <td>{{$request->approved_qty}}</td>
-	                                                <td>{{$request->approved_unit}}</td>
+	                                                <td>{{$request->uom}}</td>
 	                                                <td><input type="number" name="issued_qty[]" required value="{{$request->issued_qty}}"></td>
-	                                                <td><input type="text" name="issued_unit[]" required value="{{$request->issued_unit}}"></td>
 	                                                <input type="hidden" name="request_detail_id[]" value="{{$request->request_detail_id}}">
 	                                                <!-- <td style="display: flex;">
 	                                                    

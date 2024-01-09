@@ -63,7 +63,7 @@ class ProductMaterialRequestIssuedController extends Controller
     {
         $product_material_request = ProductMaterialRequest::select('product_material_requests.*', 'users.name')->leftjoin('users', 'users.id', '=', 'product_material_requests.requested_by')->where('material_request_id', $id)->first();
 
-        $request_details = ProductMaterialRequestDetail::where('material_request_id', $id)->get();
+        $request_details = ProductMaterialRequestDetail::select('product_material_request_details.*', 'units.uom')->leftjoin('units', 'units.unit_id', '=', 'product_material_request_details.unit')->where('material_request_id', $id)->get();
 
         $details = array('product_material_request' => $product_material_request, 'request_details' => $request_details);
 
@@ -94,7 +94,7 @@ class ProductMaterialRequestIssuedController extends Controller
         $now = date('Y-m-d H:i:s');
 
         for($i=0; $i<count($request->request_detail_id); $i++) {
-            ProductMaterialRequestDetail::where('request_detail_id', $request->request_detail_id[$i])->update(['issued_qty' => $request->issued_qty[$i], 'issued_unit' => $request->issued_unit[$i]]);
+            ProductMaterialRequestDetail::where('request_detail_id', $request->request_detail_id[$i])->update(['issued_qty' => $request->issued_qty[$i]]);
         }
         $product_material_request = ProductMaterialRequest::where('material_request_id', $request->material_request_id)->update(['issued_by' => 1, 'issued_date' => $now]);
 
